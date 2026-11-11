@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://puteririverinn.com/sitemap.xml

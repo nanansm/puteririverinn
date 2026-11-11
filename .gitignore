@@ -1,0 +1,7 @@
+*.bak
+*.png
+!site/**/*.png
+_unused_img/
+copy/*.err
+__pycache__/
+shot.py
