@@ -87,7 +87,7 @@ ld = [
     {
         "@context": "https://schema.org", "@type": "LodgingBusiness", "@id": DOMAIN + "/#pri",
         "name": "Puteri River Inn", "url": DOMAIN + "/", "telephone": "+62-821-2625-9506",
-        "image": [DOMAIN + "/img/hero-d.jpg", DOMAIN + "/img/hero-m.jpg"],
+        "image": [DOMAIN + "/img/hero-d.jpg", DOMAIN + "/img/hero-m.jpg?v=2"],
         "description": C["META_DESC"], "priceRange": "Rp300.000 - Rp1.400.000",
         "address": {"@type": "PostalAddress", "streetAddress": "Citengah",
                     "addressLocality": "Sumedang Selatan", "addressRegion": "Jawa Barat", "postalCode": "45311", "addressCountry": "ID"},
@@ -119,15 +119,15 @@ page = f'''<!doctype html><html lang="id"><head><meta charset="utf-8">
 <link rel="icon" href="img/favicon.png" type="image/png"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/fraunces-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" imagesrcset="img/hero-m-828.avif 828w, img/hero-m.avif 1080w" imagesizes="100vw" type="image/avif" media="(max-width:899px)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/hero-m-828.avif?v=2 828w, img/hero-m.avif?v=2 1080w" imagesizes="100vw" type="image/avif" media="(max-width:899px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-d.avif" type="image/avif" media="(min-width:900px)" fetchpriority="high">
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>
 </head><body>
 {SPRITE}
 <header class="hero">
-<picture><source media="(min-width:900px)" srcset="img/hero-d.avif" type="image/avif"><source media="(min-width:900px)" srcset="img/hero-d.webp" type="image/webp"><source srcset="img/hero-m-828.avif 828w, img/hero-m.avif 1080w" sizes="100vw" type="image/avif"><source srcset="img/hero-m-828.webp 828w, img/hero-m.webp 1080w" sizes="100vw" type="image/webp">
-<img src="img/hero-m.jpg" width="1080" height="1920" alt="Foto udara seluruh area Puteri River Inn: saung, kolam renang, sungai, dan sawah di Citengah, Sumedang" fetchpriority="high"></picture>
+<picture><source media="(min-width:900px)" srcset="img/hero-d.avif" type="image/avif"><source media="(min-width:900px)" srcset="img/hero-d.webp" type="image/webp"><source srcset="img/hero-m-828.avif?v=2 828w, img/hero-m.avif?v=2 1080w" sizes="100vw" type="image/avif"><source srcset="img/hero-m-828.webp?v=2 828w, img/hero-m.webp?v=2 1080w" sizes="100vw" type="image/webp">
+<img src="img/hero-m.jpg?v=2" width="1080" height="1920" alt="Foto udara seluruh area Puteri River Inn: saung, kolam renang, sungai, dan sawah di Citengah, Sumedang" fetchpriority="high"></picture>
 <div class="hi">
 <img class="logo" src="img/logo-putih.webp" width="120" height="120" alt="Logo Puteri River Inn">
 <p class="lab">{e("HERO_LABEL")}</p>
