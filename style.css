@@ -147,6 +147,30 @@ footer p{margin:.4em 0}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;background:var(--h);color:#fff;text-decoration:none;font-weight:600;padding:14px 20px;border-radius:999px;box-shadow:0 6px 18px rgba(21,66,36,.28);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .2s,transform .2s}
 .fab.show{opacity:1;transform:none;pointer-events:auto}
 
+/* Mobile (<900px): teks non-heading turun 2px, hero full-bleed 9:16 */
+@media (max-width:899px){
+ body{font-size:15px}
+ .lab{font-size:calc(.72rem - 2px)}
+ .btn{font-size:14px;min-height:46px}
+ .btn.big{font-size:15px;min-height:52px}
+ .sub{font-size:calc(1.05rem - 2px)}
+ .flt button{font-size:calc(.9rem - 2px)}
+ .arti{font-size:14px}
+ .pr dt{font-size:calc(.68rem - 2px)}
+ .pr dd{font-size:calc(1.4rem - 2px)}
+ .pr dd small{font-size:calc(.8rem - 2px)}
+ .rs blockquote{font-size:calc(1.25rem - 2px)}
+ .rs figcaption,.map span{font-size:calc(.72rem - 2px)}
+ .faq summary{font-size:calc(1.15rem - 2px)}
+ footer{font-size:calc(.92rem - 2px)}
+ .official .num,.cta .num{font-size:calc(1.8rem - 2px)}
+ .hero{min-height:100svh;width:100%}
+ .hero picture img{object-position:50% 40%}
+ .logo{width:68px;height:68px;margin-bottom:10px}
+ .hi{padding:32px 20px calc(36px + env(safe-area-inset-bottom))}
+ .links{gap:8px;margin-top:18px}
+}
+
 @media (min-width:640px){
  .cards{grid-template-columns:1fr 1fr}
  .links{grid-template-columns:1fr 1fr}.links .big{grid-column:span 2}.soc{grid-column:span 2;justify-content:flex-start}

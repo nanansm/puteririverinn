@@ -5,3 +5,4 @@ _unused_img/
 copy/*.err
 __pycache__/
 shot.py
+site/devices.html

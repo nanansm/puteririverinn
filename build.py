@@ -127,7 +127,7 @@ page = f'''<!doctype html><html lang="id"><head><meta charset="utf-8">
 {SPRITE}
 <header class="hero">
 <picture><source media="(min-width:900px)" srcset="img/hero-d.avif" type="image/avif"><source media="(min-width:900px)" srcset="img/hero-d.webp" type="image/webp"><source srcset="img/hero-m-828.avif 828w, img/hero-m.avif 1080w" sizes="100vw" type="image/avif"><source srcset="img/hero-m-828.webp 828w, img/hero-m.webp 1080w" sizes="100vw" type="image/webp">
-<img src="img/hero-m.jpg" width="1080" height="1350" alt="Foto udara seluruh area Puteri River Inn: saung, kolam renang, sungai, dan sawah di Citengah, Sumedang" fetchpriority="high"></picture>
+<img src="img/hero-m.jpg" width="1080" height="1920" alt="Foto udara seluruh area Puteri River Inn: saung, kolam renang, sungai, dan sawah di Citengah, Sumedang" fetchpriority="high"></picture>
 <div class="hi">
 <img class="logo" src="img/logo-putih.webp" width="120" height="120" alt="Logo Puteri River Inn">
 <p class="lab">{e("HERO_LABEL")}</p>
