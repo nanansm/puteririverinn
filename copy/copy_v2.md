@@ -2,7 +2,7 @@ TITLE_TAG: Villa Sumedang Tepi Sungai & Wisata Alam | Puteri River Inn
 META_DESC: Nginep di villa kayu pinggir sungai Citengah, anak bebas main air, makan liwet di restoran Sunda. Wisata Sumedang buat keluarga. Booking WA 0821-2625-9506
 HERO_LABEL: Puteri River Inn
 HERO_H1: Ngadem di Citengah Sumedang
-HERO_SUB: Ecowisata di Sumedang, dengan villa kayu di pinggir sungai dan restoran Sunda untuk keluarga.
+HERO_SUB: Eko wisata di Sumedang, dengan villa kayu di pinggir sungai dan restoran Sunda untuk keluarga.
 BTN_BOOK: Booking via WA
 BTN_SAUNG: Lihat Saung
 BTN_MENU: Lihat Menu Restoran
