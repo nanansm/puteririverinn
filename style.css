@@ -1,5 +1,5 @@
 /* Palet brand PRI: Kertas #F3EFE4, Embun #DCE4D2, Hijau #1EA74B (aksi saja), Leuweung #154224 */
-@font-face{font-family:Fraunces;src:url(fonts/fraunces-300.woff2) format("woff2");font-weight:300 400;font-style:normal;font-display:swap}
+@font-face{font-family:Fraunces;src:url(fonts/fraunces-300.woff2) format("woff2");font-weight:300 400;font-style:normal;font-display:optional}
 @font-face{font-family:Fraunces;src:url(fonts/fraunces-300i.woff2) format("woff2");font-weight:300 400;font-style:italic;font-display:swap}
 @font-face{font-family:Figtree;src:url(fonts/figtree.woff2) format("woff2");font-weight:300 900;font-display:swap}
 :root{--k:#F3EFE4;--e:#DCE4D2;--h:#1EA74B;--l:#154224;--t:#1f2f25;--m:#4f5e55;--line:rgba(21,66,36,.18);--r:6px;--track:.14em}
@@ -65,7 +65,15 @@ section.wrap{padding:72px 20px}
 .cards{display:grid;gap:22px;grid-template-columns:1fr}
 .card{background:var(--k);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;scroll-margin-top:20px}
 .card[hidden]{display:none}
-.card>picture img{width:100%;aspect-ratio:748/576;object-fit:cover}
+.sl{position:relative;background:#0e2a17}
+.sr{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;aspect-ratio:3/2}
+.sr::-webkit-scrollbar{display:none}
+.sr picture{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always}
+.sr img{width:100%;height:100%;object-fit:cover;display:block}
+.sp,.sn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(10,30,18,.55);color:#fff;font:400 1.6rem/1 Figtree,sans-serif;cursor:pointer;display:none}
+.sp{left:8px}.sn{right:8px}
+.sc{position:absolute;right:10px;bottom:10px;padding:3px 9px;border-radius:99px;background:rgba(10,30,18,.6);color:#fff;font:600 .78rem Figtree,sans-serif;pointer-events:none}
+@media (hover:hover){.sp,.sn{display:block}}
 .cb{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
 .ch{display:flex;align-items:center;gap:10px;margin-bottom:8px;color:var(--l)}
 .ch svg{width:36px;height:36px;flex:none}

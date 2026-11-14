@@ -45,6 +45,7 @@ SAUNG = [  # nama, kap, wd, we, maks extrabed
     ("Ambu", 4, 550, 600, 2), ("Citundun", 4, 550, 600, 1), ("Indung", 4, 750, 850, 2),
     ("Cijolang", 6, 850, 950, 4), ("Cikarut", 6, 850, 950, 4), ("Dewa", 10, 1300, 1400, 5),
 ]
+FOTO = {"cihonje": 5, "citengah": 4, "cisoka": 5, "ambu": 5, "citundun": 3, "indung": 5, "cijolang": 6, "cikarut": 6, "dewa": 6}
 pr = lambda k: (f"{k/1000:g}".replace(".", ",") + "<small> jt</small>") if k >= 1000 else f"{k}<small> rb</small>"
 rp = lambda k: f"Rp{k/1000:g} jt".replace(".", ",") if k >= 1000 else f"Rp{k} rb"
 
@@ -68,15 +69,19 @@ svg = lambda k, s=20: f'<svg width="{s}" height="{s}" viewBox="0 0 24 24" fill="
 
 def card(i, n, kap, wd, we, xb):
     s = n.lower()
-    thumbs = "".join(
-        f'<img src="img/{s}_{i}.webp" width="200" height="190" loading="lazy" decoding="async" alt="Foto {n} {i}">' for i in range(1, 5)
-    )
+    cnt = FOTO[s]
+    SZ = "(min-width:900px) 360px,(min-width:640px) 46vw,calc(100vw - 42px)"
+    def pic(j):
+        ss = lambda ext: f"img/s/{s}-{j}-640.{ext} 640w, img/s/{s}-{j}-960.{ext} 960w"
+        d = "" if j == 1 else "data-"  # foto 2+ baru dimuat saat kartu terlihat / digeser
+        return (f'<picture><source {d}srcset="{ss("avif")}" sizes="{SZ}" type="image/avif"><source {d}srcset="{ss("webp")}" sizes="{SZ}" type="image/webp">'
+                f'<img {d}src="img/s/{s}-{j}-640.webp" width="960" height="640" loading="lazy" decoding="async" alt="Saung {n} Puteri River Inn Sumedang, foto {j} dari {cnt}"></picture>')
+    slides = "".join(pic(j) for j in range(1, cnt + 1))
     return f'''<article class="card" data-kap="{kap}" id="saung-{s}">
-<picture><source srcset="img/{s}.webp" type="image/webp"><img src="img/{s}.jpg" width="748" height="576" loading="lazy" decoding="async" alt="Saung {n}, Puteri River Inn Sumedang"></picture>
+<div class="sl"><div class="sr" tabindex="0" aria-label="Foto Saung {n}, geser untuk lihat {cnt} foto">{slides}</div><button class="sp" aria-label="Foto sebelumnya">‹</button><button class="sn" aria-label="Foto berikutnya">›</button><span class="sc">1/{cnt}</span></div>
 <div class="cb"><div class="ch">{sym(n,36)}<p class="lab">Saung {i:02d} · {kap} orang</p></div>
 <h3>{n}</h3><p class="arti">{html.escape(SYM.meaning(n))}</p>
 <p class="d">{e("DESC_" + n.upper())}</p>
-<div class="th">{thumbs}</div>
 <dl class="pr"><div><dt>Weekday · Rp</dt><dd>{pr(wd)}</dd></div><div><dt>Weekend · Rp</dt><dd>{pr(we)}</dd></div></dl>
 <a class="btn wa" href="{wa(n)}" data-ev="wa_saung" data-saung="{n}" rel="noopener">{svg("wa",18)} {e("CARD_BTN")}</a></div></article>'''
 
@@ -119,14 +124,14 @@ page = f'''<!doctype html><html lang="id"><head><meta charset="utf-8">
 <link rel="icon" href="img/favicon.png" type="image/png"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/fraunces-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" imagesrcset="img/hero-m-828.avif?v=2 828w, img/hero-m.avif?v=2 1080w" imagesizes="100vw" type="image/avif" media="(max-width:899px)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/hero-m-828.avif?v=3 828w, img/hero-m.avif?v=2 1080w" imagesizes="100vw" type="image/avif" media="(max-width:899px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-d.avif" type="image/avif" media="(min-width:900px)" fetchpriority="high">
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>
 </head><body>
 {SPRITE}
 <header class="hero">
-<picture><source media="(min-width:900px)" srcset="img/hero-d.avif" type="image/avif"><source media="(min-width:900px)" srcset="img/hero-d.webp" type="image/webp"><source srcset="img/hero-m-828.avif?v=2 828w, img/hero-m.avif?v=2 1080w" sizes="100vw" type="image/avif"><source srcset="img/hero-m-828.webp?v=2 828w, img/hero-m.webp?v=2 1080w" sizes="100vw" type="image/webp">
+<picture><source media="(min-width:900px)" srcset="img/hero-d.avif" type="image/avif"><source media="(min-width:900px)" srcset="img/hero-d.webp" type="image/webp"><source srcset="img/hero-m-828.avif?v=3 828w, img/hero-m.avif?v=2 1080w" sizes="100vw" type="image/avif"><source srcset="img/hero-m-828.webp?v=2 828w, img/hero-m.webp?v=2 1080w" sizes="100vw" type="image/webp">
 <img src="img/hero-m.jpg?v=2" width="1080" height="1920" alt="Foto udara seluruh area Puteri River Inn: saung, kolam renang, sungai, dan sawah di Citengah, Sumedang" fetchpriority="high"></picture>
 <div class="hi">
 <img class="logo" src="img/logo-putih.webp" width="120" height="120" alt="Logo Puteri River Inn">
@@ -189,6 +194,9 @@ page = f'''<!doctype html><html lang="id"><head><meta charset="utf-8">
 <script>
 const fab=document.querySelector('.fab');new IntersectionObserver(([x])=>fab.classList.toggle('show',!x.isIntersecting)).observe(document.querySelector('.links'));
 document.querySelectorAll('.flt button').forEach(b=>b.onclick=()=>{{document.querySelectorAll('.flt button').forEach(x=>x.classList.toggle('on',x===b));const f=+b.dataset.f;document.querySelectorAll('.card').forEach(c=>c.hidden=f&&+c.dataset.kap!==f)}});
+const hy=(r,all)=>[...r.querySelectorAll('[data-srcset],[data-src]')].slice(0,all?99:3).forEach(x=>{{if(x.dataset.srcset){{x.srcset=x.dataset.srcset;x.removeAttribute('data-srcset')}}if(x.dataset.src){{x.src=x.dataset.src;x.removeAttribute('data-src')}}}});
+const io=new IntersectionObserver(es=>es.forEach(x=>{{if(x.isIntersecting){{hy(x.target,0);io.unobserve(x.target)}}}}));
+document.querySelectorAll('.sl').forEach(l=>{{const r=l.querySelector('.sr'),c=l.querySelector('.sc'),n=r.children.length;let t;io.observe(r);['pointerdown','scroll','focus','mouseenter'].forEach(ev=>l.addEventListener(ev,()=>hy(r,1),{{once:true,passive:true,capture:true}}));r.addEventListener('scroll',()=>{{cancelAnimationFrame(t);t=requestAnimationFrame(()=>c.textContent=Math.round(r.scrollLeft/r.clientWidth)+1+'/'+n)}},{{passive:true}});l.querySelector('.sp').onclick=()=>r.scrollBy({{left:-r.clientWidth,behavior:'smooth'}});l.querySelector('.sn').onclick=()=>r.scrollBy({{left:r.clientWidth,behavior:'smooth'}})}});
 document.addEventListener('click',e=>{{const a=e.target.closest('[data-ev]');if(!a)return;const p={{event:a.dataset.ev,saung:a.dataset.saung||''}};(window.dataLayer=window.dataLayer||[]).push(p);if(window.fbq&&a.dataset.ev.startsWith('wa'))fbq('track','Contact',{{content_name:p.saung}})}});
 </script>
 </body></html>'''
